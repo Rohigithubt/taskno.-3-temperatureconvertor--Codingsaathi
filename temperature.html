@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Temperature Converter.com</title>
+	 <link rel="stylesheet" type="text/css" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous"/>
+    <div class="border">
+	<script>
+		function convert() {
+			var temp = parseFloat(document.getElementById("temp").value);
+			var unit1 = document.getElementById("unit1").value;
+			var unit2 = document.getElementById("unit2").value;
+			var result;
+			
+			if (unit1 == "Celsius") {
+				if (unit2 == "Fahrenheit") {
+					result = (temp * 1.8) + 32;
+				} else if (unit2 == "Kelvin") {
+					result = temp + 273.15;
+				} else {
+					result = temp;
+				}
+			} else if (unit1 == "Fahrenheit") {
+				if (unit2 == "Celsius") {
+					result = (temp - 32) / 1.8;
+				} else if (unit2 == "Kelvin") {
+					result = (temp - 32) / 1.8 + 273.15;
+				} else {
+					result = temp;
+				}
+			} else if (unit1 == "Kelvin") {
+				if (unit2 == "Celsius") {
+					result = temp - 273.15;
+				} else if (unit2 == "Fahrenheit") {
+					result = (temp - 273.15) * 1.8 + 32;
+				} else {
+					result = temp;
+				}
+			}
+			
+			document.getElementById("result").innerHTML = result.toFixed(2);
+		}
+	</script>
+	 <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 20px;
+    }
+    
+    h1 {
+      text-align: center;
+    }
+    </style>
+
+</head>
+<body>
+	<div class="container">
+	<h1>Temperature Converter</h1>
+	<div class="form-group">
+	
+	<label>Enter temperature:</label>
+	<input style="padding-right: 1px;padding-left: 1px;" type="number" id="temp">
+	</div>
+	
+	<div class="form-group">
+	<label style="margin-left: -300px;">Convert from:</label>
+	<select id="unit1">
+		<option value="Celsius">Celsius</option>
+		<option value="Fahrenheit">Fahrenheit</option>
+		<option value="Kelvin">Kelvin</option>
+	</select>
+</div>
+<br>
+
+<div class="form-group">	
+	<label style="margin-left: -300px;">Convert to:</label>
+	<select id="unit2">
+		<option value="Celsius">Celsius</option>
+		<option value="Fahrenheit">Fahrenheit</option>
+		<option value="Kelvin">Kelvin</option>
+	</select>
+</div>
+	<div class="form-group">
+	<button style="background-color: blue;color: white;" 
+	onclick="convert()">Convert</button>
+</div>
+
+<div class="form-group">	
+	<p>Result: <span id="result"></span></p>
+</div>
+	</div>
+</body></div>
+</html>
